@@ -53,7 +53,7 @@ export function comments(state = {}, action) {
           parentDeleted: true
         }
       }
-    dafault :
+    default :
       return state
   }
 }
