@@ -8,7 +8,7 @@ import {
   DELETE_PARENT_POST
 } from '../actions/comments'
 
-export function comments(state = {}, action) {
+export default function comments(state = {}, action) {
   switch (action.type) {
     case RECEIVE_COMMENTS :
       return {
