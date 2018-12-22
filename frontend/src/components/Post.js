@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { deleteParentPost } from '../actions/comments'
 import { deletePost, upPostVote, downPostVote } from '../actions/posts'
 import { formatDate } from '../utils/helpers'
 
 class Post extends Component {
   handleDelete = (id) => {
+    const { commentIds } = this.props
+
     this.props.dispatch(deletePost(id))
+
+    commentIds.map((id) => this.props.dispatch(deleteParentPost(id)))
   }
 
   handleIncrement = (id) => {
@@ -35,9 +40,10 @@ class Post extends Component {
   }
 }
 
-function mapStateToProps({ posts }, { id }) {
+function mapStateToProps({ comments, posts }, { id }) {
   return {
-    post: posts[id]
+    post: posts[id],
+    commentIds: Object.keys(comments).filter((commentId) => comments[commentId].parentId === id)
   }
 }
 
