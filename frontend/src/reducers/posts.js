@@ -35,7 +35,7 @@ export default function posts(state = {}, action) {
         ...state,
         [action.id]: {
           ...state[action.id],
-          voteScore: ...state[action.id].voteScore++
+          voteScore: ++state[action.id].voteScore
         }
       }
     case DOWN_POST_VOTE :
@@ -43,7 +43,7 @@ export default function posts(state = {}, action) {
         ...state,
         [action.id]: {
           ...state[action.id],
-          voteScore: ...state[action.id].voteScore--
+          voteScore: --state[action.id].voteScore
         }
       }
     case ADD_CHILD_COMMENT :
@@ -51,7 +51,7 @@ export default function posts(state = {}, action) {
         ...state,
         [action.id]: {
           ...state[action.id],
-          commentCount: ...state[action.id].commentCount++
+          commentCount: ++state[action.id].commentCount
         }
       }
     case DELETE_CHILD_COMMENT :
@@ -59,7 +59,7 @@ export default function posts(state = {}, action) {
         ...state,
         [action.id]: {
           ...state[action.id],
-          commentCount: ...state[action.id].commentCount--
+          commentCount: --state[action.id].commentCount
         }
       }
     default :

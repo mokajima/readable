@@ -34,7 +34,7 @@ export default function comments(state = {}, action) {
         ...state,
         [action.id]: {
           ...state[action.id],
-          voteScore: ...state[action.id].voteScore++
+          voteScore: ++state[action.id].voteScore
         }
       }
     case DOWN_COMMENT_VOTE :
@@ -42,7 +42,7 @@ export default function comments(state = {}, action) {
         ...state,
         [action.id]: {
           ...state[action.id],
-          voteScore: ...state[action.id].voteScore--
+          voteScore: --state[action.id].voteScore
         }
       }
     case DELETE_PARENT_POST :
