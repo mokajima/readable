@@ -38,7 +38,6 @@ class EditComment extends Component {
   }
 
   render() {
-    const { comment } = this.props
     const { author, body } = this.state
 
     return (
