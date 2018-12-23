@@ -26,3 +26,10 @@ export function formatDate(timestamp) {
 
   return formattedDate;
 }
+
+/**
+ * https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+ */
+export function getId() {
+  return Math.random().toString(36).slice(2)
+}

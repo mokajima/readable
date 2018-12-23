@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addComment } from '../actions/comments'
 import { addChildComment } from '../actions/posts'
+import { getId } from '../utils/helpers'
 
 class NewComment extends Component {
   state = {
@@ -22,9 +23,7 @@ class NewComment extends Component {
   handleSubmit = () => {
     const { parentId } = this.props
     const { author, body } = this.state
-
-    // https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
-    const id = Math.random().toString(36).slice(2)
+    const id = getId()
 
     this.props.dispatch(addComment({
       [id]: {
