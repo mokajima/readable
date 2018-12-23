@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addPost } from '../actions/posts'
 import { getId, getTimestamp } from '../utils/helpers'
+import PostForm from './PostForm'
 
 class NewPost extends Component {
   state = {
@@ -47,71 +48,20 @@ class NewPost extends Component {
   }
 
   render() {
-    const { categories } = this.props
     const { title, body, author, category } = this.state
 
     return (
-      <div>
-        <table>
-          <tbody>
-            <tr>
-              <th>Title</th>
-              <td>
-                <input
-                  type="text"
-                  name="title"
-                  value={title}
-                  onChange={this.handleChange}
-                />
-              </td>
-            </tr>
-            <tr>
-              <th>Body</th>
-              <td>
-                <textarea
-                  name="body"
-                  value={body}
-                  onChange={this.handleChange}
-                />
-              </td>
-            </tr>
-            <tr>
-              <th>Category</th>
-              <td>
-                <select
-                  name="category"
-                  value={category}
-                  onChange={this.handleChange}
-                >
-                  {categories.map((cat) => (
-                    <option key={cat.name} value={cat.name}>{cat.name}</option>
-                  ))}
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <th>Author</th>
-              <td>
-                <input
-                  type="text"
-                  name="author"
-                  value={author}
-                  onChange={this.handleChange}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <button onClick={this.handleSubmit} disabled={this.isDisabled()}>Submit</button>
-      </div>
+      <PostForm
+        title={title}
+        body={body}
+        author={author}
+        category={category}
+        isDisabled={this.isDisabled}
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+      />
     )
   }
 }
 
-function mapStateToProps({ categories }) {
-  return {
-    categories
-  }
-}
-
-export default connect(mapStateToProps)(NewPost)
+export default connect()(NewPost)
