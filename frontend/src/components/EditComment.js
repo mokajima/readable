@@ -64,7 +64,9 @@ class EditComment extends Component {
   }
 }
 
-function mapStateToProps({ comments }, { id }) {
+function mapStateToProps({ comments }, props) {
+  const { id } = props.match.params
+
   return {
     comment: comments[id]
   }

@@ -64,7 +64,9 @@ class EditPost extends Component {
   }
 }
 
-function mapStateToProps({ posts }, { id }) {
+function mapStateToProps({ posts }, props) {
+  const { id } = props.match.params
+
   return {
     post: posts[id]
   }

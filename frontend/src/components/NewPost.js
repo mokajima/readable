@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { addPost } from '../actions/posts'
 import { getId, getTimestamp } from '../utils/helpers'
 import PostForm from './PostForm'
@@ -45,6 +46,8 @@ class NewPost extends Component {
         commentCount: 0
       }
     }))
+
+    this.props.history.push(`/${category}/${id}`)
   }
 
   render() {
@@ -64,4 +67,4 @@ class NewPost extends Component {
   }
 }
 
-export default connect()(NewPost)
+export default withRouter(connect()(NewPost))

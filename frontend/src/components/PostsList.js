@@ -40,7 +40,8 @@ class PostsList extends Component {
   }
 }
 
-function mapStateToProps({ posts }, { category }) {
+function mapStateToProps({ posts }, props) {
+  const { category } = props.match.params
   const ids = category
     ? Object.keys(posts).filter((id) => posts[id].category === category)
     : Object.keys(posts)

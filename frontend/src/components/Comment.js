@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { deleteComment, upCommentVote, downCommentVote } from '../actions/comments'
 import { deleteChildComment } from '../actions/posts'
 
@@ -26,7 +27,7 @@ class Comment extends Component {
       <article>
         <p>{comment.author}</p>
         <p>{comment.body}</p>
-        <p>Edit</p>
+        <Link to={`/comment/${comment.id}`}>Edit</Link>
         <p onClick={() => this.handleDelete(comment.id)}>Delete</p>
         <p onClick={() => this.handleDecrement(comment.id)}>-</p>
         <p>{comment.voteScore}</p>
