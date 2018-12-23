@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { deleteParentPost } from '../actions/comments'
 import { deletePost, upPostVote, downPostVote } from '../actions/posts'
 import { formatDate } from '../utils/helpers'
@@ -39,6 +40,12 @@ class Post extends Component {
       </li>
     )
   }
+}
+
+Post.propTypes = {
+  post: PropTypes.object.isRequired,
+  commentIds: PropTypes.array.isRequired,
+  id: PropTypes.string.isRequired
 }
 
 function mapStateToProps({ comments, posts }, { id }) {

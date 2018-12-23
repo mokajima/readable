@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router-dom'
 import { deleteParentPost } from '../actions/comments'
 import { deletePost, upPostVote, downPostVote } from '../actions/posts'
@@ -46,6 +47,15 @@ class PostPage extends Component {
         </article>
       : null
   }
+}
+
+PostPage.propTypes = {
+  comments: PropTypes.object.isRequired,
+  post: PropTypes.oneOfType([
+    PropTypes.object.isRequired,
+    PropTypes.oneOf([null]).isRequired,
+  ]),
+  commentIds: PropTypes.array.isRequired
 }
 
 function mapStateToProps({ comments, posts }, props) {

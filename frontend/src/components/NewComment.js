@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { addComment } from '../actions/comments'
 import { addChildComment } from '../actions/posts'
 import { getId, getTimestamp } from '../utils/helpers'
@@ -71,6 +72,10 @@ class NewComment extends Component {
       </div>
     )
   }
+}
+
+NewComment.propTypes = {
+  parentId: PropTypes.string.isRequired
 }
 
 export default connect()(NewComment)

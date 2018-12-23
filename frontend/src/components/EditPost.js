@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { editPost } from '../actions/posts'
 import { getTimestamp } from '../utils/helpers'
 import PostForm from './PostForm'
@@ -62,6 +63,10 @@ class EditPost extends Component {
       />
     )
   }
+}
+
+EditPost.propTypes = {
+  post: PropTypes.object.isRequired
 }
 
 function mapStateToProps({ posts }, props) {

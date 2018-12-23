@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { deleteComment, upCommentVote, downCommentVote } from '../actions/comments'
 import { deleteChildComment } from '../actions/posts'
 
@@ -35,6 +36,11 @@ class Comment extends Component {
       </article>
     )
   }
+}
+
+Comment.propTypes = {
+  id: PropTypes.string.isRequired,
+  comment: PropTypes.object.isRequired
 }
 
 function mapStateToProps({ comments }, { id }) {

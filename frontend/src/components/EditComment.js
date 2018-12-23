@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { editComment } from '../actions/comments'
 import { getTimestamp } from '../utils/helpers'
 
@@ -62,6 +63,10 @@ class EditComment extends Component {
       </div>
     )
   }
+}
+
+EditComment.propTypes = {
+  comment: PropTypes.object.isRequired
 }
 
 function mapStateToProps({ comments }, props) {

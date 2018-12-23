@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import Post from './Post'
 
 class PostsList extends Component {
@@ -38,6 +39,11 @@ class PostsList extends Component {
       </Fragment>
     )
   }
+}
+
+PostsList.propTypes = {
+  posts: PropTypes.object.isRequired,
+  ids: PropTypes.array.isRequired
 }
 
 function mapStateToProps({ posts }, props) {

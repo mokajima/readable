@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 function PostForm(props){
   const {
@@ -68,6 +69,17 @@ function PostForm(props){
       <button onClick={handleSubmit} disabled={isDisabled()}>Submit</button>
     </div>
   )
+}
+
+PostForm.propTypes = {
+  categories: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  isDisabled: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired
 }
 
 function mapStateToProps({ categories }) {
