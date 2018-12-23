@@ -33,3 +33,7 @@ export function formatDate(timestamp) {
 export function getId() {
   return Math.random().toString(36).slice(2)
 }
+
+export function getTimestamp() {
+  return new Date().getTime()
+}

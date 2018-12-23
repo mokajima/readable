@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addComment } from '../actions/comments'
 import { addChildComment } from '../actions/posts'
-import { getId } from '../utils/helpers'
+import { getId, getTimestamp } from '../utils/helpers'
 
 class NewComment extends Component {
   state = {
@@ -29,7 +29,7 @@ class NewComment extends Component {
       [id]: {
         id,
         parentId,
-        timestamp: new Date().getTime(),
+        timestamp: getTimestamp(),
         body: body.trim(),
         author: author.trim(),
         voteScore: 0,
