@@ -31,7 +31,7 @@ class NewComment extends Component {
       timestamp: getTimestamp(),
       body: body.trim(),
       author: author.trim(),
-      voteScore: 0,
+      voteScore: 1,
       deleted: false,
       parentDeleted: false
     }

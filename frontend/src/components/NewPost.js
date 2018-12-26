@@ -40,7 +40,7 @@ class NewPost extends Component {
       body: body.trim(),
       author: author.trim(),
       category,
-      voteScore: 0,
+      voteScore: 1,
       deleted: false,
       commentCount: 0
     }
