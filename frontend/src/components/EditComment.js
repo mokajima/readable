@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { editComment } from '../actions/comments'
+import { handleEditComment } from '../actions/comments'
 import { getTimestamp } from '../utils/helpers'
 
 class EditComment extends Component {
@@ -24,18 +24,18 @@ class EditComment extends Component {
     const { id, parentId, voteScore, deleted, parentDeleted } = this.props.comment
     const { author, body } = this.state
 
-    this.props.dispatch(editComment({
-      [id]: {
-        id,
-        parentId,
-        timestamp: getTimestamp(),
-        body: body.trim(),
-        author: author.trim(),
-        voteScore,
-        deleted,
-        parentDeleted
-      }
-    }))
+    const comment = {
+      id,
+      parentId,
+      timestamp: getTimestamp(),
+      body: body.trim(),
+      author: author.trim(),
+      voteScore,
+      deleted,
+      parentDeleted
+    }
+
+    this.props.dispatch(handleEditComment(comment))
   }
 
   render() {

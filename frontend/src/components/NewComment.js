@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { addComment } from '../actions/comments'
-import { addChildComment } from '../actions/posts'
+import { handleAddComment } from '../actions/shared'
 import { getId, getTimestamp } from '../utils/helpers'
 
 class NewComment extends Component {
@@ -26,20 +25,18 @@ class NewComment extends Component {
     const { author, body } = this.state
     const id = getId()
 
-    this.props.dispatch(addComment({
-      [id]: {
-        id,
-        parentId,
-        timestamp: getTimestamp(),
-        body: body.trim(),
-        author: author.trim(),
-        voteScore: 0,
-        deleted: false,
-        parentDeleted: false
-      }
-    }))
+    const comment = {
+      id,
+      parentId,
+      timestamp: getTimestamp(),
+      body: body.trim(),
+      author: author.trim(),
+      voteScore: 0,
+      deleted: false,
+      parentDeleted: false
+    }
 
-    this.props.dispatch(addChildComment(parentId))
+    this.props.dispatch(handleAddComment(comment))
 
     this.setState({
       author: '',

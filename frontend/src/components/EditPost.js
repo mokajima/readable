@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { editPost } from '../actions/posts'
+import { handleEditPost } from '../actions/posts'
 import { getTimestamp } from '../utils/helpers'
 import PostForm from './PostForm'
 
@@ -33,18 +33,16 @@ class EditPost extends Component {
     const { id, voteScore, deleted, commentCount } = this.props.post
     const { title, body, author, category } = this.state
 
-    this.props.dispatch(editPost({
-      [id]: {
-        id,
-        timestamp: getTimestamp(),
-        title: title.trim(),
-        body: body.trim(),
-        author: author.trim(),
-        category,
-        voteScore,
-        deleted,
-        commentCount
-      }
+    this.props.dispatch(handleEditPost({
+      id,
+      timestamp: getTimestamp(),
+      title: title.trim(),
+      body: body.trim(),
+      author: author.trim(),
+      category,
+      voteScore,
+      deleted,
+      commentCount
     }))
   }
 

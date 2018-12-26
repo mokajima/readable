@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router-dom'
-import { deleteParentPost } from '../actions/comments'
-import { deletePost, upPostVote, downPostVote } from '../actions/posts'
+import { handleDeletePost } from '../actions/shared'
+import { handleUpPostVote, handleDownPostVote } from '../actions/posts'
 import Comment from './Comment'
 import NewComment from './NewComment'
 
@@ -11,41 +11,47 @@ class PostPage extends Component {
   handleDelete = (id) => {
     const { commentIds } = this.props
 
-    this.props.dispatch(deletePost(id))
-
-    commentIds.map((commentId) => this.props.dispatch(deleteParentPost(commentId)))
+    this.props.dispatch(handleDeletePost(id, commentIds))
 
     this.props.history.push('/')
   }
 
   handleIncrement = (id) => {
-    this.props.dispatch(upPostVote(id))
+    this.props.dispatch(handleUpPostVote(id))
   }
 
   handleDecrement = (id) => {
-    this.props.dispatch(downPostVote(id))
+    this.props.dispatch(handleDownPostVote(id))
   }
 
   render() {
     const { comments, post, commentIds } = this.props
 
-    return post
-      ? <article>
-          <h1>{post.title}</h1>
-          <p>{post.body}</p>
-          <p>{post.author}</p>
-          <p>{post.commentCount}</p>
-          <Link to={`/edit/${post.id}`}>Edit</Link>
-          <p onClick={() => this.handleDelete(post.id)}>Delete</p>
-          <p onClick={() => this.handleDecrement(post.id)}>-</p>
-          <p>{post.voteScore}</p>
-          <p onClick={() => this.handleIncrement(post.id)}>+</p>
+    if (post === null) {
+      return null;
+    }
 
-          {commentIds.map((id) => comments[id].deleted ? null : <Comment id={id} key={id} />)}
+    if (post.deleted) {
+      return <p>Oops, the page cannot be found.</p>
+    }
 
-          <NewComment parentId={post.id} />
-        </article>
-      : null
+    return (
+      <article>
+        <h1>{post.title}</h1>
+        <p>{post.body}</p>
+        <p>{post.author}</p>
+        <p>{post.commentCount}</p>
+        <Link to={`/edit/${post.id}`}>Edit</Link>
+        <p onClick={() => this.handleDelete(post.id)}>Delete</p>
+        <p onClick={() => this.handleDecrement(post.id)}>-</p>
+        <p>{post.voteScore}</p>
+        <p onClick={() => this.handleIncrement(post.id)}>+</p>
+
+        {commentIds.map((id) => comments[id].deleted ? null : <Comment id={id} key={id} />)}
+
+        <NewComment parentId={post.id} />
+      </article>
+    )
   }
 }
 

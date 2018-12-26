@@ -72,6 +72,10 @@ app.get('/', (req, res) => {
         Sets the deleted flag for a post to 'true'.
         Sets the parentDeleted flag for all child comments to 'true'.
 
+    GET /comments
+      USAGE:
+        Get all of the comments.
+
     GET /posts/:id/comments
       USAGE:
         Get all the comments for a single post
@@ -226,6 +230,19 @@ app.put('/posts/:id', bodyParser.json(), (req, res) => {
     posts.edit(req.token, req.params.id, req.body)
       .then(
         (data) => res.send(data),
+          (error) => {
+              console.error(error)
+              res.status(500).send({
+                  error: 'There was an error.'
+              })
+          }
+      )
+})
+
+app.get('/comments', (req, res) => {
+    comments.getAll(req.token)
+      .then(
+          (data) => res.send(data),
           (error) => {
               console.error(error)
               res.status(500).send({

@@ -1,3 +1,5 @@
+import { updateComment, voteComment } from '../utils/api'
+
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const EDIT_COMMENT = 'EDIT_COMMENT'
@@ -20,10 +22,24 @@ export function addComment(comment) {
   }
 }
 
-export function editComment(comment) {
+function editComment(comment) {
   return {
     type: EDIT_COMMENT,
     comment
+  }
+}
+
+export function handleEditComment(comment) {
+  return (dispatch) => {
+    updateComment(comment)
+      .then(() => {
+        dispatch(editComment({
+          [comment.id]: comment
+        }))
+      })
+      .catch(() => {
+        alert( 'There was an error. Please try again.' )
+      })
   }
 }
 
@@ -34,17 +50,37 @@ export function deleteComment(id) {
   }
 }
 
-export function upCommentVote(id) {
+function upCommentVote(id) {
   return {
     type: UP_COMMENT_VOTE,
     id
   }
 }
 
-export function downCommentVote(id) {
+export function handleUpCommentVote(id) {
+  return (dispatch) => {
+    voteComment(id, 'upVote')
+      .then(dispatch(upCommentVote(id)))
+      .catch(() => {
+        alert( 'There was an error. Please try again.' )
+      })
+  }
+}
+
+function downCommentVote(id) {
   return {
     type: DOWN_COMMENT_VOTE,
     id
+  }
+}
+
+export function handleDownCommentVote(id) {
+  return (dispatch) => {
+    voteComment(id, 'downVote')
+      .then(dispatch(downCommentVote(id)))
+      .catch(() => {
+        alert( 'There was an error. Please try again.' )
+      })
   }
 }
 

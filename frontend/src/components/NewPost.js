@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { addPost } from '../actions/posts'
+import { handleAddPost } from '../actions/posts'
 import { getId, getTimestamp } from '../utils/helpers'
 import PostForm from './PostForm'
 
@@ -33,19 +33,19 @@ class NewPost extends Component {
     const { title, body, author, category } = this.state
     const id = getId()
 
-    this.props.dispatch(addPost({
-      [id]: {
-        id,
-        timestamp: getTimestamp(),
-        title: title.trim(),
-        body: body.trim(),
-        author: author.trim(),
-        category,
-        voteScore: 0,
-        deleted: false,
-        commentCount: 0
-      }
-    }))
+    const post = {
+      id,
+      timestamp: getTimestamp(),
+      title: title.trim(),
+      body: body.trim(),
+      author: author.trim(),
+      category,
+      voteScore: 0,
+      deleted: false,
+      commentCount: 0
+    }
+
+    this.props.dispatch(handleAddPost(post))
 
     this.props.history.push(`/${category}/${id}`)
   }

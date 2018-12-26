@@ -1,3 +1,5 @@
+import { addNewPost, updatePost, votePost } from '../utils/api'
+
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const ADD_POST = 'ADD_POST'
 export const EDIT_POST = 'EDIT_POST'
@@ -14,17 +16,41 @@ export function receivePosts(posts) {
   }
 }
 
-export function addPost(post) {
+function addPost(post) {
   return {
     type: ADD_POST,
     post
   }
 }
 
-export function editPost(post) {
+export function handleAddPost(post) {
+  const { id } = post
+
+  return (dispatch) => {
+    addNewPost(post)
+      .then(dispatch(addPost({ [id]: post })))
+      .catch(() => {
+        alert( 'There was an error. Please try again.' )
+      })
+  }
+}
+
+function editPost(post) {
   return {
     type: EDIT_POST,
     post
+  }
+}
+
+export function handleEditPost(post) {
+  const { id } = post
+
+  return (dispatch) => {
+    updatePost(post)
+      .then(dispatch(editPost({ [id]: post })))
+      .catch(() => {
+        alert( 'There was an error. Please try again.' )
+      })
   }
 }
 
@@ -35,17 +61,37 @@ export function deletePost(id) {
   }
 }
 
-export function upPostVote(id) {
+function upPostVote(id) {
   return {
     type: UP_POST_VOTE,
     id
   }
 }
 
-export function downPostVote(id) {
+export function handleUpPostVote(id) {
+  return (dispatch) => {
+    votePost(id, 'upVote')
+      .then(dispatch(upPostVote(id)))
+      .catch(() => {
+        alert( 'There was an error. Please try again.' )
+      })
+  }
+}
+
+function downPostVote(id) {
   return {
     type: DOWN_POST_VOTE,
     id
+  }
+}
+
+export function handleDownPostVote(id) {
+  return (dispatch) => {
+    votePost(id, 'downVote')
+      .then(dispatch(downPostVote(id)))
+      .catch(() => {
+        alert( 'There was an error. Please try again.' )
+      })
   }
 }
 

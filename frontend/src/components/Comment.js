@@ -2,23 +2,22 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { deleteComment, upCommentVote, downCommentVote } from '../actions/comments'
-import { deleteChildComment } from '../actions/posts'
+import { handleUpCommentVote, handleDownCommentVote } from '../actions/comments'
+import { handleDeleteComment } from '../actions/shared'
 
 class Comment extends Component {
   handleDelete = (id) => {
     const { comment } = this.props
 
-    this.props.dispatch(deleteComment(id))
-    this.props.dispatch(deleteChildComment(comment.parentId))
+    this.props.dispatch(handleDeleteComment(comment))
   }
 
   handleIncrement = (id) => {
-    this.props.dispatch(upCommentVote(id))
+    this.props.dispatch(handleUpCommentVote(id))
   }
 
   handleDecrement = (id) => {
-    this.props.dispatch(downCommentVote(id))
+    this.props.dispatch(handleDownCommentVote(id))
   }
 
   render() {

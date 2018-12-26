@@ -54,6 +54,13 @@ function get (token, id) {
   })
 }
 
+function getAll (token) {
+  return new Promise((res) => {
+    const comments = getData(token)
+    res(comments)
+  })
+}
+
 function add (token, comment) {
   return new Promise((res) => {
     let comments = getData(token)
@@ -123,6 +130,7 @@ function edit (token, id, comment) {
 
 module.exports = {
   get,
+  getAll,
   getByParent,
   add,
   vote,
