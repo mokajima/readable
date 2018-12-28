@@ -9,7 +9,7 @@ class PostsList extends Component {
   }
 
   render() {
-    const { posts, ids } = this.props
+    const { posts, ids, category } = this.props
     let sortedIds
 
     switch (this.state.sort) {
@@ -26,14 +26,18 @@ class PostsList extends Component {
         sortedIds = ids
     }
 
+    if ('add' === category) {
+      return null // 'add' is not a category
+    }
+
     return (
       <Fragment>
-        <ul>
-          <li onClick={() => this.setState({sort: 'newest'})}>Newest</li>
-          <li onClick={() => this.setState({sort: 'oldest'})}>Oldest</li>
-          <li onClick={() => this.setState({sort: 'votes'})}>Votes</li>
+        <ul className="tabs">
+          <li className="tabs__item" onClick={() => this.setState({sort: 'newest'})}>Newest</li>
+          <li className="tabs__item" onClick={() => this.setState({sort: 'oldest'})}>Oldest</li>
+          <li className="tabs__item" onClick={() => this.setState({sort: 'votes'})}>Votes</li>
         </ul>
-        <ol>
+        <ol className="posts-list">
           {sortedIds.map((id) => posts[id].deleted ? null : <Post id={id} key={id} />)}
         </ol>
       </Fragment>
@@ -43,18 +47,21 @@ class PostsList extends Component {
 
 PostsList.propTypes = {
   posts: PropTypes.object.isRequired,
-  ids: PropTypes.array.isRequired
+  ids: PropTypes.array.isRequired,
+  category: PropTypes.string
 }
 
 function mapStateToProps({ posts }, props) {
   const { category } = props.match.params
+
   const ids = category
     ? Object.keys(posts).filter((id) => posts[id].category === category)
     : Object.keys(posts)
 
   return {
     posts,
-    ids
+    ids,
+    category
   }
 }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -15,13 +15,14 @@ function PostForm(props){
   } = props
 
   return (
-    <div>
-      <table>
+    <Fragment>
+      <table className="table">
         <tbody>
           <tr>
             <th>Title</th>
             <td>
               <input
+                className="input"
                 type="text"
                 name="title"
                 value={title}
@@ -33,6 +34,7 @@ function PostForm(props){
             <th>Body</th>
             <td>
               <textarea
+                className="input"
                 name="body"
                 value={body}
                 onChange={handleChange}
@@ -43,6 +45,7 @@ function PostForm(props){
             <th>Category</th>
             <td>
               <select
+                className="select"
                 name="category"
                 value={category}
                 onChange={handleChange}
@@ -57,6 +60,7 @@ function PostForm(props){
             <th>Author</th>
             <td>
               <input
+                className="input"
                 type="text"
                 name="author"
                 value={author}
@@ -66,8 +70,14 @@ function PostForm(props){
           </tr>
         </tbody>
       </table>
-      <button onClick={handleSubmit} disabled={isDisabled()}>Submit</button>
-    </div>
+      <button
+        className="button"
+        onClick={handleSubmit}
+        disabled={isDisabled()}
+      >
+        Submit
+      </button>
+    </Fragment>
   )
 }
 

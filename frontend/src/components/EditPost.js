@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { handleEditPost } from '../actions/posts'
@@ -10,7 +10,8 @@ class EditPost extends Component {
     title: this.props.post.title,
     body: this.props.post.body,
     author: this.props.post.author,
-    category: this.props.post.category
+    category: this.props.post.category,
+    isSubmitted: false
   }
 
   isDisabled = () => {
@@ -25,7 +26,8 @@ class EditPost extends Component {
     const value = target.value
 
     this.setState({
-      [name]: value
+      [name]: value,
+      isSubmitted: false
     })
   }
 
@@ -44,21 +46,30 @@ class EditPost extends Component {
       deleted,
       commentCount
     }))
+
+    this.setState({
+      isSubmitted: true
+    })
   }
 
   render() {
-    const { title, body, author, category } = this.state
+    const { title, body, author, category, isSubmitted } = this.state
 
     return (
-      <PostForm
-        title={title}
-        body={body}
-        author={author}
-        category={category}
-        isDisabled={this.isDisabled}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-      />
+      <Fragment>
+        {isSubmitted && (
+          <p>Post updated!</p>
+        )}
+        <PostForm
+          title={title}
+          body={body}
+          author={author}
+          category={category}
+          isDisabled={this.isDisabled}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
+      </Fragment>
     )
   }
 }

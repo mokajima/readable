@@ -49,18 +49,36 @@ class NewComment extends Component {
 
     return (
       <div>
-        <input
-          type="text"
-          name="author"
-          value={author}
-          onChange={this.handleChange}
-        />
-        <textarea
-          name="body"
-          value={body}
-          onChange={this.handleChange}
-        />
+        <table className="table">
+          <caption className="table__caption">Create a comment</caption>
+          <tbody>
+            <tr>
+              <th>Author</th>
+              <td>
+                <input
+                  className="input"
+                  type="text"
+                  name="author"
+                  value={author}
+                  onChange={this.handleChange}
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>Body</th>
+              <td>
+                <textarea
+                  className="input"
+                  name="body"
+                  value={body}
+                  onChange={this.handleChange}
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <button
+          className="button"
           disabled={'' === author.trim() || '' === body.trim()}
           onClick={this.handleSubmit}
         >

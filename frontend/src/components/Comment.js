@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { formatDate } from '../utils/helpers'
 import { handleUpCommentVote, handleDownCommentVote } from '../actions/comments'
 import { handleDeleteComment } from '../actions/shared'
 
@@ -24,14 +27,25 @@ class Comment extends Component {
     const { comment } = this.props
 
     return (
-      <article>
-        <p>{comment.author}</p>
-        <p>{comment.body}</p>
-        <Link to={`/comment/${comment.id}`}>Edit</Link>
-        <p onClick={() => this.handleDelete(comment.id)}>Delete</p>
-        <p onClick={() => this.handleDecrement(comment.id)}>-</p>
-        <p>{comment.voteScore}</p>
-        <p onClick={() => this.handleIncrement(comment.id)}>+</p>
+      <article className="comment">
+        <div>
+          <p className="comment__author">{comment.author}</p>
+          <p className="comment__date">{formatDate(comment.timestamp)}</p>
+          <p>{comment.body}</p>
+          <footer className="comment__footer">
+            <Link to={`/comment/${comment.id}`}>Edit</Link>
+            <p className="comment__delete" onClick={() => this.handleDelete(comment.id)}>Delete</p>
+          </footer>
+        </div>
+        <div className="comment__votes">
+          <p onClick={() => this.handleIncrement(comment.id)}>
+            <FontAwesomeIcon icon={faAngleUp} size="2x" />
+          </p>
+          <p>{comment.voteScore}</p>
+          <p onClick={() => this.handleDecrement(comment.id)}>
+            <FontAwesomeIcon icon={faAngleDown} size="2x" />
+          </p>
+        </div>
       </article>
     )
   }
