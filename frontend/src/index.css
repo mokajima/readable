@@ -340,6 +340,7 @@ a {
 }
 
 .comment__delete {
+  cursor: pointer;
   margin: 0 1rem;
 }
 
