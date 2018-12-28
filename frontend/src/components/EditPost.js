@@ -14,12 +14,20 @@ class EditPost extends Component {
     isSubmitted: false
   }
 
+  /**
+   * @description Whether or not all form fields are filled
+   * @returns {bool}
+   */
   isDisabled = () => {
     const { title, body, author, category } = this.state
 
     return '' === title.trim() || '' === body.trim() || '' === author.trim() || '' === category
   }
 
+  /**
+   * @description Update the state
+   * @param {object} e - The event object
+   */
   handleChange = (e) => {
     const target = e.target
     const name = target.name
@@ -31,6 +39,9 @@ class EditPost extends Component {
     })
   }
 
+  /**
+   * @description Save an edited post
+   */
   handleSubmit = () => {
     const { id, voteScore, deleted, commentCount } = this.props.post
     const { title, body, author, category } = this.state

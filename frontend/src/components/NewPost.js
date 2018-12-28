@@ -13,12 +13,20 @@ class NewPost extends Component {
     category: 'react'
   }
 
+  /**
+   * @description Whether or not all form fields are filled
+   * @returns {bool}
+   */
   isDisabled = () => {
     const { title, body, author, category } = this.state
 
     return '' === title.trim() || '' === body.trim() || '' === author.trim() || '' === category
   }
 
+  /**
+   * @description Update the state
+   * @params {object} - The event object
+   */
   handleChange = (e) => {
     const target = e.target
     const name = target.name
@@ -29,6 +37,9 @@ class NewPost extends Component {
     })
   }
 
+  /**
+   * @description Add a new post
+   */
   handleSubmit = () => {
     const { title, body, author, category } = this.state
     const id = getId()

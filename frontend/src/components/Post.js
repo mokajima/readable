@@ -9,16 +9,29 @@ import { handleUpPostVote, handleDownPostVote } from '../actions/posts'
 import { formatDate } from '../utils/helpers'
 
 class Post extends Component {
+
+  /**
+   * @description Delete a post
+   * @params {string} id - The ID of the post
+   */
   handleDelete = (id) => {
     const { commentIds } = this.props
 
     this.props.dispatch(handleDeletePost(id, commentIds))
   }
 
+  /**
+   * @description Upvote a post
+   * @params {string} id - The ID of the post
+   */
   handleIncrement = (id) => {
     this.props.dispatch(handleUpPostVote(id))
   }
 
+  /**
+   * @description Downvote a post
+   * @params {string} id - The ID of the post
+   */
   handleDecrement = (id) => {
     this.props.dispatch(handleDownPostVote(id))
   }

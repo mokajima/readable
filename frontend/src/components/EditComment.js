@@ -11,6 +11,10 @@ class EditComment extends Component {
     isSubmitted: false
   }
 
+  /**
+   * @description Update the state
+   * @param {object} e - The event object
+   */
   handleChange = (e) => {
     const target = e.target
     const name = target.name
@@ -22,6 +26,9 @@ class EditComment extends Component {
     })
   }
 
+  /**
+   * @description Save an edited comment
+   */
   handleSubmit = () => {
     const { id, parentId, voteScore, deleted, parentDeleted } = this.props.comment
     const { author, body } = this.state

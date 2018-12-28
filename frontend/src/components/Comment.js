@@ -9,16 +9,29 @@ import { handleUpCommentVote, handleDownCommentVote } from '../actions/comments'
 import { handleDeleteComment } from '../actions/shared'
 
 class Comment extends Component {
+
+  /**
+   * @description Delete a comment
+   * @param {string} id - The ID of the comment
+   */
   handleDelete = (id) => {
     const { comment } = this.props
 
     this.props.dispatch(handleDeleteComment(comment))
   }
 
+  /**
+   * @description Upvote a comment
+   * @param {string} id - The ID of the comment
+   */
   handleIncrement = (id) => {
     this.props.dispatch(handleUpCommentVote(id))
   }
 
+  /**
+   * @description Downvote a comment
+   * @param {string} id - The ID of the comment
+   */
   handleDecrement = (id) => {
     this.props.dispatch(handleDownCommentVote(id))
   }

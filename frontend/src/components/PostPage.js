@@ -11,6 +11,11 @@ import Comment from './Comment'
 import NewComment from './NewComment'
 
 class PostPage extends Component {
+
+  /**
+   * @description Delete a post
+   * @params {string} id - The ID of the post
+   */
   handleDelete = (id) => {
     const { commentIds } = this.props
 
@@ -19,10 +24,18 @@ class PostPage extends Component {
     this.props.history.push('/')
   }
 
+  /**
+   * @description Upvote a post
+   * @params {string} id - The ID of the post
+   */
   handleIncrement = (id) => {
     this.props.dispatch(handleUpPostVote(id))
   }
 
+  /**
+   * @description Downvote a post
+   * @params {string} id - The ID of the post
+   */
   handleDecrement = (id) => {
     this.props.dispatch(handleDownPostVote(id))
   }

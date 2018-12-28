@@ -10,6 +10,10 @@ class NewComment extends Component {
     body: ''
   }
 
+  /**
+   * @description Update the state
+   * @params {object} - The event object
+   */
   handleChange = (e) => {
     const target = e.target
     const name = target.name
@@ -20,6 +24,9 @@ class NewComment extends Component {
     })
   }
 
+  /**
+   * @description Add a comment to a post
+   */
   handleSubmit = () => {
     const { parentId } = this.props
     const { author, body } = this.state
