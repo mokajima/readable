@@ -66,7 +66,8 @@ class Comment extends Component {
 
 Comment.propTypes = {
   id: PropTypes.string.isRequired,
-  comment: PropTypes.object.isRequired
+  comment: PropTypes.object.isRequired,
+  dispatch: PropTypes.func
 }
 
 function mapStateToProps({ comments }, { id }) {

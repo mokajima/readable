@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class Header extends Component {
   render() {
@@ -23,6 +24,10 @@ class Header extends Component {
       </header>
     )
   }
+}
+
+Header.propTypes = {
+  categories: PropTypes.object.isRequired
 }
 
 function mapStateToProps({ categories }) {

@@ -86,7 +86,8 @@ class EditPost extends Component {
 }
 
 EditPost.propTypes = {
-  post: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired,
+  dispatch: PropTypes.func
 }
 
 function mapStateToProps({ posts }, props) {

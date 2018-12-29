@@ -98,7 +98,9 @@ PostPage.propTypes = {
     PropTypes.object.isRequired,
     PropTypes.oneOf([null]).isRequired,
   ]),
-  commentIds: PropTypes.array.isRequired
+  commentIds: PropTypes.array.isRequired,
+  dispatch: PropTypes.func,
+  history: PropTypes.object
 }
 
 function mapStateToProps({ comments, posts }, props) {

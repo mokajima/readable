@@ -72,7 +72,8 @@ class Post extends Component {
 Post.propTypes = {
   post: PropTypes.object.isRequired,
   commentIds: PropTypes.array.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  dispatch: PropTypes.func
 }
 
 function mapStateToProps({ comments, posts }, { id }) {

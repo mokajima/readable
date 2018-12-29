@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter, Route, Link  } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { handleInitialData } from '../actions/shared'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
@@ -36,6 +37,10 @@ class App extends Component {
       </BrowserRouter>
     )
   }
+}
+
+App.propTypes = {
+  dispatch: PropTypes.func
 }
 
 export default connect()(App)

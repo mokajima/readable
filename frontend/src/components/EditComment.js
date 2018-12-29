@@ -99,7 +99,8 @@ class EditComment extends Component {
 }
 
 EditComment.propTypes = {
-  comment: PropTypes.object.isRequired
+  comment: PropTypes.object.isRequired,
+  dispatch: PropTypes.func
 }
 
 function mapStateToProps({ comments }, props) {

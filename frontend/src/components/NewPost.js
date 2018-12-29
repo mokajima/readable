@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { handleAddPost } from '../actions/posts'
 import { getId, getTimestamp } from '../utils/helpers'
 import PostForm from './PostForm'
@@ -76,6 +77,11 @@ class NewPost extends Component {
       />
     )
   }
+}
+
+NewPost.propTypes = {
+  dispatch: PropTypes.func,
+  history: PropTypes.object
 }
 
 export default withRouter(connect()(NewPost))

@@ -97,7 +97,8 @@ class NewComment extends Component {
 }
 
 NewComment.propTypes = {
-  parentId: PropTypes.string.isRequired
+  parentId: PropTypes.string.isRequired,
+  dispatch: PropTypes.func
 }
 
 export default connect()(NewComment)
