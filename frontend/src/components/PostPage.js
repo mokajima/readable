@@ -44,7 +44,7 @@ class PostPage extends Component {
     const { comments, post, commentIds } = this.props
 
     if (post === null) {
-      return null;
+      return null
     }
 
     if (post.deleted) {

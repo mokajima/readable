@@ -11,7 +11,7 @@ const monthNames = [
   'Oct',
   'Nov',
   'Dec'
-];
+]
 
 export function formatDate(timestamp) {
   const date = new Date(timestamp)
@@ -24,7 +24,7 @@ export function formatDate(timestamp) {
 
   const formattedDate = `${month} ${day}, ${year} at ${hours}:${minutes}`
 
-  return formattedDate;
+  return formattedDate
 }
 
 /**
