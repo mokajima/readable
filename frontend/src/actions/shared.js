@@ -30,7 +30,7 @@ export function handleAddComment(comment) {
         dispatch(addChildComment(parentId))
       })
       .catch(() => {
-        alert( 'There was an error. Please try again.' )
+        alert('There was an error. Please try again.')
       })
   }
 }
@@ -45,7 +45,7 @@ export function handleDeleteComment(comment) {
         dispatch(deleteChildComment(parentId))
       })
       .catch(() => {
-        alert( 'There was an error. Please try again.' )
+        alert('There was an error. Please try again.')
       })
   }
 }
@@ -58,7 +58,7 @@ export function handleDeletePost(id, commentIds) {
         commentIds.map((id) => dispatch(deleteParentPost(id)))
       })
       .catch(() => {
-        alert( 'There was an error. Please try again.' )
+        alert('There was an error. Please try again.')
       })
   }
 }

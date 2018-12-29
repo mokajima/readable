@@ -38,7 +38,7 @@ export function handleEditComment(comment) {
         }))
       })
       .catch(() => {
-        alert( 'There was an error. Please try again.' )
+        alert('There was an error. Please try again.')
       })
   }
 }
@@ -62,7 +62,7 @@ export function handleUpCommentVote(id) {
     voteComment(id, 'upVote')
       .then(dispatch(upCommentVote(id)))
       .catch(() => {
-        alert( 'There was an error. Please try again.' )
+        alert('There was an error. Please try again.')
       })
   }
 }
@@ -79,7 +79,7 @@ export function handleDownCommentVote(id) {
     voteComment(id, 'downVote')
       .then(dispatch(downCommentVote(id)))
       .catch(() => {
-        alert( 'There was an error. Please try again.' )
+        alert('There was an error. Please try again.')
       })
   }
 }

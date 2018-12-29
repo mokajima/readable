@@ -30,7 +30,7 @@ export function handleAddPost(post) {
     addNewPost(post)
       .then(dispatch(addPost({ [id]: post })))
       .catch(() => {
-        alert( 'There was an error. Please try again.' )
+        alert('There was an error. Please try again.')
       })
   }
 }
@@ -49,7 +49,7 @@ export function handleEditPost(post) {
     updatePost(post)
       .then(dispatch(editPost({ [id]: post })))
       .catch(() => {
-        alert( 'There was an error. Please try again.' )
+        alert('There was an error. Please try again.')
       })
   }
 }
@@ -73,7 +73,7 @@ export function handleUpPostVote(id) {
     votePost(id, 'upVote')
       .then(dispatch(upPostVote(id)))
       .catch(() => {
-        alert( 'There was an error. Please try again.' )
+        alert('There was an error. Please try again.')
       })
   }
 }
@@ -90,7 +90,7 @@ export function handleDownPostVote(id) {
     votePost(id, 'downVote')
       .then(dispatch(downPostVote(id)))
       .catch(() => {
-        alert( 'There was an error. Please try again.' )
+        alert('There was an error. Please try again.')
       })
   }
 }
