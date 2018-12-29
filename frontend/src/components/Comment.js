@@ -12,9 +12,8 @@ class Comment extends Component {
 
   /**
    * @description Delete a comment
-   * @param {string} id - The ID of the comment
    */
-  handleDelete = (id) => {
+  handleDelete = () => {
     const { comment } = this.props
 
     this.props.dispatch(handleDeleteComment(comment))
