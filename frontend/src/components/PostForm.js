@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-function PostForm(props){
+function PostForm(props) {
   const {
     categories,
     title,
