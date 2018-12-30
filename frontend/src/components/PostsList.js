@@ -37,9 +37,13 @@ class PostsList extends Component {
           <li className="tabs__item" onClick={() => this.setState({sort: 'oldest'})}>Oldest</li>
           <li className="tabs__item" onClick={() => this.setState({sort: 'votes'})}>Votes</li>
         </ul>
-        <ol className="posts-list">
-          {sortedIds.map((id) => posts[id].deleted ? null : <Post id={id} key={id} />)}
-        </ol>
+        {sortedIds.length ? (
+          <ol className="posts-list">
+            {sortedIds.map((id) => posts[id].deleted ? null : <Post id={id} key={id} />)}
+          </ol>
+        ) : (
+          <p style={{textAlign: 'center'}}>There is no registered posts X(</p>
+        )}
       </Fragment>
     )
   }
