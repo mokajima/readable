@@ -6,7 +6,7 @@ import {
   UP_COMMENT_VOTE,
   DOWN_COMMENT_VOTE,
   DELETE_PARENT_POST
-} from '../actions/comments'
+} from '../actions/types'
 
 export default function comments(state = {}, action) {
   switch (action.type) {
