@@ -48,7 +48,13 @@ class PostPage extends Component {
     }
 
     if (post.deleted) {
-      return <p>Oops, the page cannot be found.</p>
+      return (
+        <div style={{textAlign: 'center'}}>
+          <p>Oops, the page cannot be found X(</p>
+          <Link className="button" to="/">Return to Home Page</Link>
+        </div>
+      )
+
     }
 
     return (
