@@ -1,13 +1,15 @@
 import { addNewPost, updatePost, votePost } from '../utils/api'
 
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
-export const ADD_POST = 'ADD_POST'
-export const EDIT_POST = 'EDIT_POST'
-export const DELETE_POST = 'DELETE_POST'
-export const UP_POST_VOTE = 'UP_POST_VOTE'
-export const DOWN_POST_VOTE = 'DOWN_POST_VOTE'
-export const ADD_CHILD_COMMENT = 'ADD_CHILD_COMMENT'
-export const DELETE_CHILD_COMMENT = 'DELETE_CHILD_COMMENT'
+import {
+  RECEIVE_POSTS,
+  ADD_POST,
+  EDIT_POST,
+  DELETE_POST,
+  UP_POST_VOTE,
+  DOWN_POST_VOTE,
+  ADD_CHILD_COMMENT,
+  DELETE_CHILD_COMMENT
+} from './types'
 
 export function receivePosts(posts) {
   return {

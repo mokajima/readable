@@ -1,12 +1,13 @@
 import { updateComment, voteComment } from '../utils/api'
-
-export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
-export const ADD_COMMENT = 'ADD_COMMENT'
-export const EDIT_COMMENT = 'EDIT_COMMENT'
-export const DELETE_COMMENT = 'DELETE_COMMENT'
-export const UP_COMMENT_VOTE = 'UP_COMMENT_VOTE'
-export const DOWN_COMMENT_VOTE = 'DOWN_COMMENT_VOTE'
-export const DELETE_PARENT_POST = 'DELETE_PARENT_POST'
+import {
+  RECEIVE_COMMENTS,
+  ADD_COMMENT,
+  EDIT_COMMENT,
+  DELETE_COMMENT,
+  UP_COMMENT_VOTE,
+  DOWN_COMMENT_VOTE,
+  DELETE_PARENT_POST
+} from './types'
 
 export function receiveComments(comments) {
   return {
