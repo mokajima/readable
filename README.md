@@ -2,6 +2,8 @@
 
 "Readable" is an anonymous content and comment web application.
 
+![Screenshot](https://mokajima.github.io/portfolio/images/readable.jpg)
+
 ## Dependencies
 
 - [React](https://github.com/facebook/react)
