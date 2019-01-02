@@ -27,7 +27,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  categories: PropTypes.object.isRequired
+  categories: PropTypes.array.isRequired
 }
 
 function mapStateToProps({ categories }) {
