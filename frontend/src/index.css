@@ -267,6 +267,10 @@ a {
   margin-bottom: 50px;
 }
 
+.entry__title a {
+  color: #b40b43;
+}
+
 .entry__meta {
   color: #666;
   display: flex;

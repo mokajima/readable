@@ -62,7 +62,9 @@ class PostPage extends Component {
         <div className="entry__inner">
           <div>
             <header>
-              <h1 className="entry__title">{post.title}</h1>
+              <h1 className="entry__title">
+                <Link to={`/${post.category}/${post.id}`}>{post.title}</Link>
+              </h1>
               <p className="entry__meta">
                 <span className="post__author">{post.author}</span>
                 <span className="post__date">{formatDate(post.timestamp)}</span>
