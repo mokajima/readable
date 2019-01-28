@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
 import { handleEditPost } from '../actions/posts'
 import { getTimestamp } from '../utils/helpers'
 import PostForm from './PostForm'
@@ -70,6 +71,9 @@ class EditPost extends Component {
 
     return (
       <Fragment>
+        <Helmet>
+          <title>Edit Post | Readable</title>
+        </Helmet>
         {isSubmitted && (
           <p>Post updated!</p>
         )}

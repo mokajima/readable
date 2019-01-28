@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
 import Post from './Post'
 
 class PostsList extends Component {
@@ -9,7 +10,7 @@ class PostsList extends Component {
   }
 
   render() {
-    const { posts, ids } = this.props
+    const { posts, ids, category } = this.props
     let sortedIds
 
     switch (this.state.sort) {
@@ -28,6 +29,11 @@ class PostsList extends Component {
 
     return (
       <Fragment>
+        {category && (
+          <Helmet>
+            <title>{category} | Readable</title>
+          </Helmet>
+        )}
         <ul className="tabs">
           <li className="tabs__item" onClick={() => this.setState({sort: 'newest'})}>Newest</li>
           <li className="tabs__item" onClick={() => this.setState({sort: 'oldest'})}>Oldest</li>
@@ -60,7 +66,8 @@ function mapStateToProps({ posts }, props) {
 
   return {
     posts,
-    ids
+    ids,
+    category
   }
 }
 

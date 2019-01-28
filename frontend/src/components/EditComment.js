@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
 import { handleEditComment } from '../actions/comments'
 import { getTimestamp } from '../utils/helpers'
 
@@ -66,6 +67,9 @@ class EditComment extends Component {
 
     return (
       <Fragment>
+        <Helmet>
+          <title>Edit Comment | Readable</title>
+        </Helmet>
         {isSubmitted && (
           <p>Comment updated!</p>
         )}

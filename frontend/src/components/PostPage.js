@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment, faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { Link, withRouter } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import { handleDeletePost } from '../actions/shared'
 import { handleUpPostVote, handleDownPostVote } from '../actions/posts'
 import { formatDate } from '../utils/helpers'
@@ -58,44 +59,49 @@ class PostPage extends Component {
     }
 
     return (
-      <article className="entry">
-        <div className="entry__inner">
-          <div>
-            <header>
-              <h1 className="entry__title">
-                <Link to={`/${post.category}/${post.id}`}>{post.title}</Link>
-              </h1>
-              <p className="entry__meta">
-                <span className="post__author">{post.author}</span>
-                <span className="post__date">{formatDate(post.timestamp)}</span>
+      <>
+        <Helmet>
+          <title>{post.title} | Readable</title>
+        </Helmet>
+        <article className="entry">
+          <div className="entry__inner">
+            <div>
+              <header>
+                <h1 className="entry__title">
+                  <Link to={`/${post.category}/${post.id}`}>{post.title}</Link>
+                </h1>
+                <p className="entry__meta">
+                  <span className="post__author">{post.author}</span>
+                  <span className="post__date">{formatDate(post.timestamp)}</span>
+                </p>
+              </header>
+              <p>{post.body}</p>
+              <footer className="entry__footer">
+                <FontAwesomeIcon icon={faComment} />
+                <p className="entry__comment">{post.commentCount}</p>
+                <Link className="entry__edit" to={`/edit/${post.id}`}>Edit</Link>
+                <p className="entry__delete" onClick={() => this.handleDelete(post.id)}>Delete</p>
+              </footer>
+            </div>
+            <div className="entry__votes">
+              <p className="arrow" onClick={() => this.handleIncrement(post.id)}>
+                <FontAwesomeIcon icon={faAngleUp} size="2x" />
               </p>
-            </header>
-            <p>{post.body}</p>
-            <footer className="entry__footer">
-              <FontAwesomeIcon icon={faComment} />
-              <p className="entry__comment">{post.commentCount}</p>
-              <Link className="entry__edit" to={`/edit/${post.id}`}>Edit</Link>
-              <p className="entry__delete" onClick={() => this.handleDelete(post.id)}>Delete</p>
-            </footer>
+              <p>{post.voteScore}</p>
+              <p className="arrow" onClick={() => this.handleDecrement(post.id)}>
+                <FontAwesomeIcon icon={faAngleDown} size="2x" />
+              </p>
+            </div>
           </div>
-          <div className="entry__votes">
-            <p className="arrow" onClick={() => this.handleIncrement(post.id)}>
-              <FontAwesomeIcon icon={faAngleUp} size="2x" />
-            </p>
-            <p>{post.voteScore}</p>
-            <p className="arrow" onClick={() => this.handleDecrement(post.id)}>
-              <FontAwesomeIcon icon={faAngleDown} size="2x" />
-            </p>
-          </div>
-        </div>
 
-        <section className="comments">
-          <h2 className="comments__title">Comments</h2>
-          {commentIds.map((id) => comments[id].deleted ? null : <Comment id={id} key={id} />)}
-        </section>
+          <section className="comments">
+            <h2 className="comments__title">Comments</h2>
+            {commentIds.map((id) => comments[id].deleted ? null : <Comment id={id} key={id} />)}
+          </section>
 
-        <NewComment parentId={post.id} />
-      </article>
+          <NewComment parentId={post.id} />
+        </article>
+      </>
     )
   }
 }

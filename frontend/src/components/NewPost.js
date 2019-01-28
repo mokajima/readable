@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
 import { handleAddPost } from '../actions/posts'
 import { getId, getTimestamp } from '../utils/helpers'
 import PostForm from './PostForm'
@@ -66,15 +67,20 @@ class NewPost extends Component {
     const { title, body, author, category } = this.state
 
     return (
-      <PostForm
-        title={title}
-        body={body}
-        author={author}
-        category={category}
-        isDisabled={this.isDisabled}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-      />
+      <>
+        <Helmet>
+          <title>Add New Post | Readable</title>
+        </Helmet>
+        <PostForm
+          title={title}
+          body={body}
+          author={author}
+          category={category}
+          isDisabled={this.isDisabled}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
+      </>
     )
   }
 }
