@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter, Route, Link  } from 'react-router-dom'
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { handleInitialData } from '../actions/shared'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -23,12 +23,14 @@ class App extends Component {
         <Fragment>
           <Header />
           <div className="container">
-            <Route path="/" exact component={PostsList} />
-            <Route path="/:category" exact component={PostsList} />
-            <Route path="/:category/:id" component={PostPage} />
-            <Route path="/add" component={NewPost} />
-            <Route path="/edit/:id" component={EditPost} />
-            <Route path="/comment/:id" component={EditComment} />
+            <Switch>
+              <Route path="/" exact component={PostsList} />
+              <Route path="/add" component={NewPost} />
+              <Route path="/edit/:id" component={EditPost} />
+              <Route path="/comment/:id" component={EditComment} />
+              <Route path="/:category" exact component={PostsList} />
+              <Route path="/:category/:id" component={PostPage} />
+            </Switch>
             <Link className="add" to="/add">
               <FontAwesomeIcon icon={faPencilAlt} />
             </Link>

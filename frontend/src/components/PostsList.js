@@ -9,7 +9,7 @@ class PostsList extends Component {
   }
 
   render() {
-    const { posts, ids, category } = this.props
+    const { posts, ids } = this.props
     let sortedIds
 
     switch (this.state.sort) {
@@ -24,10 +24,6 @@ class PostsList extends Component {
         break
       default :
         sortedIds = ids
-    }
-
-    if ('add' === category) {
-      return null // 'add' is not a category
     }
 
     return (
@@ -64,8 +60,7 @@ function mapStateToProps({ posts }, props) {
 
   return {
     posts,
-    ids,
-    category
+    ids
   }
 }
 
