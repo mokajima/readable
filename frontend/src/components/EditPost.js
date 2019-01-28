@@ -46,7 +46,7 @@ class EditPost extends Component {
     const { id, voteScore, deleted, commentCount } = this.props.post
     const { title, body, author, category } = this.state
 
-    this.props.dispatch(handleEditPost({
+    const post = {
       id,
       timestamp: getTimestamp(),
       title: title.trim(),
@@ -56,7 +56,9 @@ class EditPost extends Component {
       voteScore,
       deleted,
       commentCount
-    }))
+    }
+
+    this.props.dispatch(handleEditPost(post))
 
     this.setState({
       isSubmitted: true
