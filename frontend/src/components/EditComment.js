@@ -12,6 +12,16 @@ class EditComment extends Component {
   }
 
   /**
+   * @description Whether or not all form fields are filled
+   * @returns {bool}
+   */
+  isDisabled = () => {
+    const { author, body } = this.state
+
+    return '' === author.trim() || '' === body.trim()
+  }
+
+  /**
    * @description Update the state
    * @param {object} e - The event object
    */
@@ -88,7 +98,7 @@ class EditComment extends Component {
         </table>
         <button
           className="button"
-          disabled={'' === author.trim() || '' === body.trim()}
+          disabled={this.isDisabled()}
           onClick={this.handleSubmit}
         >
           Submit
