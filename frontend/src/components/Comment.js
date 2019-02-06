@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { formatDate } from '../utils/helpers'
-import { handleUpCommentVote, handleDownCommentVote } from '../actions/comments'
-import { handleDeleteComment } from '../actions/shared'
 
 class Comment extends Component {
 
@@ -14,9 +11,8 @@ class Comment extends Component {
    * @description Delete a comment
    */
   handleDelete = () => {
-    const { comment } = this.props
-
-    this.props.dispatch(handleDeleteComment(comment))
+    const { deleteComment, comment } = this.props
+    deleteComment(comment)
   }
 
   /**
@@ -24,7 +20,7 @@ class Comment extends Component {
    * @param {string} id - The ID of the comment
    */
   handleIncrement = (id) => {
-    this.props.dispatch(handleUpCommentVote(id))
+    this.props.upCommentVote(id)
   }
 
   /**
@@ -32,7 +28,7 @@ class Comment extends Component {
    * @param {string} id - The ID of the comment
    */
   handleDecrement = (id) => {
-    this.props.dispatch(handleDownCommentVote(id))
+    this.props.downCommentVote(id)
   }
 
   render() {
@@ -66,13 +62,9 @@ class Comment extends Component {
 Comment.propTypes = {
   id: PropTypes.string.isRequired,
   comment: PropTypes.object.isRequired,
-  dispatch: PropTypes.func
+  deleteComment: PropTypes.func.isRequired,
+  upCommentVote: PropTypes.func.isRequired,
+  downCommentVote: PropTypes.func.isRequired
 }
 
-function mapStateToProps({ comments }, { id }) {
-  return {
-    comment: comments[id]
-  }
-}
-
-export default connect(mapStateToProps)(Comment)
+export default Comment

@@ -5,7 +5,7 @@ import { faComment, faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-i
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { formatDate } from '../utils/helpers'
-import Comment from './Comment'
+import Comment from '../containers/Comment'
 import NewComment from './NewComment'
 
 class PostPage extends Component {
