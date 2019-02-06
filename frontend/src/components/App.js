@@ -9,7 +9,7 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 import Header from './Header'
 import PostsList from '../containers/PostsList'
 import PostPage from './PostPage'
-import NewPost from './NewPost'
+import NewPost from '../containers/NewPost'
 import EditPost from './EditPost'
 import EditComment from './EditComment'
 
