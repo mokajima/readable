@@ -10,7 +10,7 @@ import Header from './Header'
 import PostsList from '../containers/PostsList'
 import PostPage from './PostPage'
 import NewPost from '../containers/NewPost'
-import EditPost from './EditPost'
+import EditPost from '../containers/EditPost'
 import EditComment from './EditComment'
 
 class App extends Component {

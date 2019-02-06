@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { handleEditPost } from '../actions/posts'
 import { getTimestamp } from '../utils/helpers'
 import PostForm from '../containers/PostForm'
 
@@ -59,7 +57,7 @@ class EditPost extends Component {
       commentCount
     }
 
-    this.props.dispatch(handleEditPost(post))
+    this.props.editPost(post)
 
     this.setState({
       isSubmitted: true
@@ -93,15 +91,7 @@ class EditPost extends Component {
 
 EditPost.propTypes = {
   post: PropTypes.object.isRequired,
-  dispatch: PropTypes.func
+  editPost: PropTypes.func.isRequired
 }
 
-function mapStateToProps({ posts }, props) {
-  const { id } = props.match.params
-
-  return {
-    post: posts[id]
-  }
-}
-
-export default connect(mapStateToProps)(EditPost)
+export default EditPost
