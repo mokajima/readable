@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import { getId, getTimestamp } from '../utils/helpers'
-import PostForm from './PostForm'
+import PostForm from '../containers/PostForm'
 
 class NewPost extends Component {
   state = {

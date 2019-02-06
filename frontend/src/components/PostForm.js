@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 function PostForm(props) {
@@ -92,10 +91,4 @@ PostForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 }
 
-function mapStateToProps({ categories }) {
-  return {
-    categories
-  }
-}
-
-export default connect(mapStateToProps)(PostForm)
+export default PostForm

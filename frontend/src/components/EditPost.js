@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { handleEditPost } from '../actions/posts'
 import { getTimestamp } from '../utils/helpers'
-import PostForm from './PostForm'
+import PostForm from '../containers/PostForm'
 
 class EditPost extends Component {
   state = {
