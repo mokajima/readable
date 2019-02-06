@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment, faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import { handleDeletePost } from '../actions/shared'
-import { handleUpPostVote, handleDownPostVote } from '../actions/posts'
 import { formatDate } from '../utils/helpers'
 import Comment from './Comment'
 import NewComment from './NewComment'
@@ -19,10 +16,7 @@ class PostPage extends Component {
    */
   handleDelete = (id) => {
     const { commentIds } = this.props
-
-    this.props.dispatch(handleDeletePost(id, commentIds))
-
-    this.props.history.push('/')
+    this.props.deletePost(id, commentIds)
   }
 
   /**
@@ -30,7 +24,7 @@ class PostPage extends Component {
    * @params {string} id - The ID of the post
    */
   handleIncrement = (id) => {
-    this.props.dispatch(handleUpPostVote(id))
+    this.props.upPostVote(id)
   }
 
   /**
@@ -38,7 +32,7 @@ class PostPage extends Component {
    * @params {string} id - The ID of the post
    */
   handleDecrement = (id) => {
-    this.props.dispatch(handleDownPostVote(id))
+    this.props.downPostVote(id)
   }
 
   render() {
@@ -113,18 +107,9 @@ PostPage.propTypes = {
     PropTypes.oneOf([null]).isRequired,
   ]),
   commentIds: PropTypes.array.isRequired,
-  dispatch: PropTypes.func,
-  history: PropTypes.object
+  deletePost: PropTypes.func.isRequired,
+  upPostVote: PropTypes.func.isRequired,
+  downPostVote: PropTypes.func.isRequired
 }
 
-function mapStateToProps({ comments, posts }, props) {
-  const { category, id } = props.match.params
-
-  return {
-    comments,
-    post: posts[id] && posts[id].category === category ? posts[id] : null,
-    commentIds: Object.keys(comments).filter((commentId) => comments[commentId].parentId === id)
-  }
-}
-
-export default withRouter(connect(mapStateToProps)(PostPage))
+export default PostPage
