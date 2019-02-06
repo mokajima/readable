@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { handleAddComment } from '../actions/shared'
 import { getId, getTimestamp } from '../utils/helpers'
 
 class NewComment extends Component {
@@ -43,7 +41,7 @@ class NewComment extends Component {
       parentDeleted: false
     }
 
-    this.props.dispatch(handleAddComment(comment))
+    this.props.addComment(comment)
 
     this.setState({
       author: '',
@@ -98,7 +96,7 @@ class NewComment extends Component {
 
 NewComment.propTypes = {
   parentId: PropTypes.string.isRequired,
-  dispatch: PropTypes.func
+  addComment: PropTypes.func.isRequired
 }
 
-export default connect()(NewComment)
+export default NewComment

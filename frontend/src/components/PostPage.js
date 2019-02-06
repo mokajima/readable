@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { formatDate } from '../utils/helpers'
 import Comment from '../containers/Comment'
-import NewComment from './NewComment'
+import NewComment from '../containers/NewComment'
 
 class PostPage extends Component {
 
