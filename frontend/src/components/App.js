@@ -11,7 +11,7 @@ import PostsList from '../containers/PostsList'
 import PostPage from './PostPage'
 import NewPost from '../containers/NewPost'
 import EditPost from '../containers/EditPost'
-import EditComment from './EditComment'
+import EditComment from '../containers/EditComment'
 
 class App extends Component {
   componentDidMount() {

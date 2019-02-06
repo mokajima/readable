@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { handleEditComment } from '../actions/comments'
 import { getTimestamp } from '../utils/helpers'
 
 class EditComment extends Component {
@@ -55,7 +53,7 @@ class EditComment extends Component {
       parentDeleted
     }
 
-    this.props.dispatch(handleEditComment(comment))
+    this.props.editComment(comment)
 
     this.setState({
       isSubmitted: true
@@ -114,15 +112,7 @@ class EditComment extends Component {
 
 EditComment.propTypes = {
   comment: PropTypes.object.isRequired,
-  dispatch: PropTypes.func
+  editComment: PropTypes.func.isRequired
 }
 
-function mapStateToProps({ comments }, props) {
-  const { id } = props.match.params
-
-  return {
-    comment: comments[id]
-  }
-}
-
-export default connect(mapStateToProps)(EditComment)
+export default EditComment
