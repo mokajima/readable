@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
@@ -30,10 +29,4 @@ Header.propTypes = {
   categories: PropTypes.array.isRequired
 }
 
-function mapStateToProps({ categories }) {
-  return {
-    categories
-  }
-}
-
-export default connect(mapStateToProps)(Header)
+export default Header
