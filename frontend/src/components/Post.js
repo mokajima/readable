@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment, faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import { handleDeletePost } from '../actions/shared'
-import { handleUpPostVote, handleDownPostVote } from '../actions/posts'
 import { formatDate } from '../utils/helpers'
 
 class Post extends Component {
@@ -15,9 +12,8 @@ class Post extends Component {
    * @params {string} id - The ID of the post
    */
   handleDelete = (id) => {
-    const { commentIds } = this.props
-
-    this.props.dispatch(handleDeletePost(id, commentIds))
+    const { commentIds, deletePost } = this.props
+    deletePost(id, commentIds)
   }
 
   /**
@@ -25,7 +21,7 @@ class Post extends Component {
    * @params {string} id - The ID of the post
    */
   handleIncrement = (id) => {
-    this.props.dispatch(handleUpPostVote(id))
+    this.props.upPostVote(id)
   }
 
   /**
@@ -33,7 +29,7 @@ class Post extends Component {
    * @params {string} id - The ID of the post
    */
   handleDecrement = (id) => {
-    this.props.dispatch(handleDownPostVote(id))
+    this.props.downPostVote(id)
   }
 
   render() {
@@ -73,14 +69,9 @@ Post.propTypes = {
   post: PropTypes.object.isRequired,
   commentIds: PropTypes.array.isRequired,
   id: PropTypes.string.isRequired,
-  dispatch: PropTypes.func
+  deletePost: PropTypes.func.isRequired,
+  upPostVote: PropTypes.func.isRequired,
+  downPostVote: PropTypes.func.isRequired
 }
 
-function mapStateToProps({ comments, posts }, { id }) {
-  return {
-    post: posts[id],
-    commentIds: Object.keys(comments).filter((commentId) => comments[commentId].parentId === id)
-  }
-}
-
-export default connect(mapStateToProps)(Post)
+export default Post

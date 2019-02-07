@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import Post from './Post'
+import Post from '../containers/Post'
 
 class PostsList extends Component {
   state = {
