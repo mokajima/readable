@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { getId, getTimestamp } from '../utils/helpers'
 import PostForm from '../containers/PostForm'
@@ -77,6 +78,10 @@ class NewPost extends Component {
       </>
     )
   }
+}
+
+NewPost.propTypes = {
+  addPost: PropTypes.func.isRequired
 }
 
 export default NewPost
