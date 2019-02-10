@@ -1,10 +1,8 @@
 import { connect } from 'react-redux'
 import PostForm from '../components/PostForm'
 
-function mapStateToProps({ categories }) {
-  return {
-    categories
-  }
-}
+const mapStateToProps = ({ categories }) => ({
+  categories
+})
 
 export default connect(mapStateToProps)(PostForm)

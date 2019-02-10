@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 function Header(props) {
+  console.log(props)
   return (
     <header className="header">
       <div className="header__inner">

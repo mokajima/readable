@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 import PostsList from '../components/PostsList'
 
-function mapStateToProps({ posts }, props) {
-  const { category } = props.match.params
+const mapStateToProps = ({ posts }, ownProps) => {
+  const { category } = ownProps.match.params
 
   const ids = category
     ? Object.keys(posts).filter((id) => posts[id].category === category)

@@ -1,10 +1,8 @@
 import { connect } from 'react-redux'
 import Header from '../components/Header'
 
-function mapStateToProps({ categories }) {
-  return {
-    categories
-  }
-}
+const mapStateToProps = ({ categories }) => ({
+  categories
+})
 
 export default connect(mapStateToProps)(Header)
