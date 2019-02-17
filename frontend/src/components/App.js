@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
@@ -20,27 +20,29 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <Fragment>
-          <Helmet>
-            <title>Readable</title>
-          </Helmet>
-          <Header />
-          <div className="container">
-            <Switch>
-              <Route path="/" exact component={PostsList} />
-              <Route path="/add" component={NewPost} />
-              <Route path="/edit/:id" component={EditPost} />
-              <Route path="/comment/:id" component={EditComment} />
-              <Route path="/:category" exact component={PostsList} />
-              <Route path="/:category/:id" component={PostPage} />
-            </Switch>
-            <Link className="add" to="/add">
-              <FontAwesomeIcon icon={faPencilAlt} />
-            </Link>
-          </div>
-        </Fragment>
-      </BrowserRouter>
+      <>
+        <Helmet>
+          <title>Readable</title>
+        </Helmet>
+        <BrowserRouter>
+          <>
+            <Header />
+            <div className="container">
+              <Switch>
+                <Route path="/" exact component={PostsList} />
+                <Route path="/add" component={NewPost} />
+                <Route path="/edit/:id" component={EditPost} />
+                <Route path="/comment/:id" component={EditComment} />
+                <Route path="/:category" exact component={PostsList} />
+                <Route path="/:category/:id" component={PostPage} />
+              </Switch>
+              <Link className="add" to="/add">
+                <FontAwesomeIcon icon={faPencilAlt} />
+              </Link>
+            </div>
+          </>
+        </BrowserRouter>
+      </>
     )
   }
 }
