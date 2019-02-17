@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { getTimestamp } from '../utils/helpers'
@@ -68,7 +68,7 @@ class EditPost extends Component {
     const { title, body, author, category, isSubmitted } = this.state
 
     return (
-      <Fragment>
+      <>
         <Helmet>
           <title>Edit Post | Readable</title>
         </Helmet>
@@ -84,7 +84,7 @@ class EditPost extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-      </Fragment>
+      </>
     )
   }
 }

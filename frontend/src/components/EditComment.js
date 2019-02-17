@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { getTimestamp } from '../utils/helpers'
@@ -64,7 +64,7 @@ class EditComment extends Component {
     const { author, body, isSubmitted } = this.state
 
     return (
-      <Fragment>
+      <>
         <Helmet>
           <title>Edit Comment | Readable</title>
         </Helmet>
@@ -105,7 +105,7 @@ class EditComment extends Component {
         >
           Submit
         </button>
-      </Fragment>
+      </>
     )
   }
 }

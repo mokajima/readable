@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 function PostForm(props) {
@@ -14,7 +14,7 @@ function PostForm(props) {
   } = props
 
   return (
-    <Fragment>
+    <>
       <table className="table">
         <tbody>
           <tr>
@@ -76,7 +76,7 @@ function PostForm(props) {
       >
         Submit
       </button>
-    </Fragment>
+    </>
   )
 }
 

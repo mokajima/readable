@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import Post from '../containers/Post'
@@ -27,7 +27,7 @@ class PostsList extends Component {
     }
 
     return (
-      <Fragment>
+      <>
         {category && (
           <Helmet>
             <title>{category} | Readable</title>
@@ -45,7 +45,7 @@ class PostsList extends Component {
         ) : (
           <p style={{textAlign: 'center'}}>There is no registered posts X(</p>
         )}
-      </Fragment>
+      </>
     )
   }
 }
