@@ -1,8 +1,13 @@
-import { connect } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import Header from '../components/Header'
 
-const mapStateToProps = ({ categories }) => ({
-  categories
-})
+const HeaderContainer = () => {
+  const categories = useSelector(state => state.categories)
 
-export default connect(mapStateToProps)(Header)
+  return (
+    <Header categories={categories} />
+  )
+}
+
+export default HeaderContainer
