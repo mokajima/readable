@@ -1,97 +1,37 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { getTimestamp } from '../utils/helpers'
-import PostForm from '../containers/PostForm'
+import PostForm from '../components/PostForm'
 
-class EditPost extends Component {
-  state = {
-    title: this.props.post.title,
-    body: this.props.post.body,
-    author: this.props.post.author,
-    category: this.props.post.category,
-    isSubmitted: false
-  }
-
-  /**
-   * @description Whether or not all form fields are filled
-   * @returns {bool}
-   */
-  isDisabled = () => {
-    const { title, body, author, category } = this.state
-
-    return '' === title.trim() || '' === body.trim() || '' === author.trim() || '' === category
-  }
-
-  /**
-   * @description Update the state
-   * @param {object} e - The event object
-   */
-  handleChange = (e) => {
-    const target = e.target
-    const name = target.name
-    const value = target.value
-
-    this.setState({
-      [name]: value,
-      isSubmitted: false
-    })
-  }
-
-  /**
-   * @description Save an edited post
-   */
-  handleSubmit = () => {
-    const { id, voteScore, deleted, commentCount } = this.props.post
-    const { title, body, author, category } = this.state
-
-    const post = {
-      id,
-      timestamp: getTimestamp(),
-      title: title.trim(),
-      body: body.trim(),
-      author: author.trim(),
-      category,
-      voteScore,
-      deleted,
-      commentCount
-    }
-
-    this.props.editPost(post)
-
-    this.setState({
-      isSubmitted: true
-    })
-  }
-
-  render() {
-    const { title, body, author, category, isSubmitted } = this.state
-
-    return (
-      <>
-        <Helmet>
-          <title>Edit Post | Readable</title>
-        </Helmet>
-        {isSubmitted && (
-          <p>Post updated!</p>
-        )}
-        <PostForm
-          title={title}
-          body={body}
-          author={author}
-          category={category}
-          isDisabled={this.isDisabled}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-        />
-      </>
-    )
-  }
-}
+const EditPost = ({
+  categories,
+  isSubmitted,
+  values,
+  handleChange,
+  handleSubmit
+}) => (
+  <>
+    <Helmet>
+      <title>Edit Post | Readable</title>
+    </Helmet>
+    {isSubmitted && (
+      <p>Post updated!</p>
+    )}
+    <PostForm
+      categories={categories}
+      values={values}
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+    />
+  </>
+)
 
 EditPost.propTypes = {
-  post: PropTypes.object.isRequired,
-  editPost: PropTypes.func.isRequired
+  categories: PropTypes.array.isRequired,
+  isSubmitted: PropTypes.bool.isRequired,
+  values: PropTypes.object.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired
 }
 
 export default EditPost

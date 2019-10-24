@@ -1,19 +1,51 @@
-import { connect } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import { handleEditPost } from '../actions/posts'
+import { getTimestamp } from '../utils/helpers'
 import EditPost from '../components/EditPost'
 
-const mapStateToProps = ({ posts }, ownProps) => {
-  const { id } = ownProps.match.params
+const EditPostContainer = () => {
+  const dispatch = useDispatch()
+  const categories = useSelector(state => state.categories)
+  const posts = useSelector(state => state.posts)
+  const { id } = useParams()
+  const post = posts[id]
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [values, setValues] = useState({
+    title: post.title,
+    body: post.body,
+    author: post.author,
+    category: post.category
+  })
 
-  return {
-    post: posts[id]
+  const handleChange = (targetName, newValue) => {
+    setIsSubmitted(false)
+    setValues(v => ({ ...v, [targetName]: newValue }))
   }
+
+  const handleSubmit = () => {
+    setIsSubmitted(true)
+
+    const newPost = {
+      ...post,
+      ...values,
+      timestamp: getTimestamp()
+    }
+
+    dispatch(handleEditPost(newPost))
+  }
+
+  return (
+    <EditPost
+      categories={categories}
+      isSubmitted={isSubmitted}
+      values={values}
+      post={post}
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+    />
+  )
 }
 
-const mapDispatchToProps = dispatch => ({
-  editPost: post => {
-    dispatch(handleEditPost(post))
-  }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditPost)
+export default EditPostContainer
