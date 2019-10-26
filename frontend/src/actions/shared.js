@@ -50,8 +50,13 @@ export function handleDeleteComment(comment) {
   }
 }
 
-export function handleDeletePost(id, commentIds) {
-  return (dispatch) => {
+export function handleDeletePost(id) {
+  return (dispatch, getState) => {
+    const { comments } = getState()
+    const commentIds = Object.keys(comments).filter(commentId => {
+      return comments[commentId].parentId === id
+    })
+
     disablePost(id)
       .then(() => {
         dispatch(deletePost(id))
