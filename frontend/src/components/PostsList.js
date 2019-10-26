@@ -1,59 +1,66 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import Post from '../containers/Post'
+import Post from '../components/Post'
 
-class PostsList extends Component {
-  state = {
-    sort: 'newest'
-  }
+const tabs = ['newest', 'oldest', 'votes']
 
-  render() {
-    const { posts, ids, category } = this.props
-    let sortedIds
-
-    switch (this.state.sort) {
-      case 'newest' :
-        sortedIds = ids.sort((a, b) => posts[b].timestamp - posts[a].timestamp)
-        break
-      case 'oldest' :
-        sortedIds = ids.sort((a, b) => posts[a].timestamp - posts[b].timestamp)
-        break
-      case 'votes' :
-        sortedIds = ids.sort((a, b) => posts[b].voteScore - posts[a].voteScore)
-        break
-      default :
-        sortedIds = ids
-    }
-
-    return (
-      <>
-        {category && (
-          <Helmet>
-            <title>{category} | Readable</title>
-          </Helmet>
-        )}
-        <ul className="tabs">
-          <li className="tabs__item" onClick={() => this.setState({sort: 'newest'})}>Newest</li>
-          <li className="tabs__item" onClick={() => this.setState({sort: 'oldest'})}>Oldest</li>
-          <li className="tabs__item" onClick={() => this.setState({sort: 'votes'})}>Votes</li>
-        </ul>
-        {sortedIds.length ? (
-          <ol className="posts-list">
-            {sortedIds.map((id) => posts[id].deleted ? null : <Post id={id} key={id} />)}
-          </ol>
-        ) : (
-          <p style={{textAlign: 'center'}}>There is no registered posts X(</p>
-        )}
-      </>
-    )
-  }
-}
+const PostsList = ({
+  category,
+  ids,
+  posts,
+  handleClick,
+  handleDeletePost,
+  handleUpPostVote,
+  handleDownPostVote
+}) => (
+  <>
+    {category && (
+      <Helmet>
+        <title>{category} | Readable</title>
+      </Helmet>
+    )}
+    <ul className="tabs">
+      {tabs.map(tab => (
+        <li
+          key={tab}
+          className="tabs__item"
+          onClick={() => handleClick(tab)}
+        >
+          {tab.toUpperCase()}
+        </li>
+      ))}
+    </ul>
+    {ids.length ? (
+      <ol className="posts-list">
+        {ids.map(id => {
+          const post = posts[id]
+          return !post.deleted ? (
+            <Post
+              post={post}
+              handleDeletePost={handleDeletePost}
+              handleUpPostVote={handleUpPostVote}
+              handleDownPostVote={handleDownPostVote}
+            />
+          ) : null
+        })}
+      </ol>
+    ) : (
+        <p style={{ textAlign: 'center' }}>
+          There is no registered posts X(
+        </p>
+    )}
+  </>
+)
 
 PostsList.propTypes = {
-  posts: PropTypes.object.isRequired,
+  category: PropTypes.string,
   ids: PropTypes.array.isRequired,
-  category: PropTypes.string
+  posts: PropTypes.object.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  handleDeletePost: PropTypes.func.isRequired,
+  handleUpPostVote: PropTypes.func.isRequired,
+  handleDownPostVote: PropTypes.func.isRequired
 }
 
 export default PostsList
