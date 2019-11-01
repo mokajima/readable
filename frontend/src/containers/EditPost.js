@@ -10,7 +10,9 @@ const EditPostContainer = () => {
   const categories = useSelector(state => state.categories)
   const posts = useSelector(state => state.posts)
   const { id } = useParams()
+
   const post = posts[id]
+
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [values, setValues] = useState({
     title: post.title,
