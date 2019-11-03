@@ -5,6 +5,7 @@ import PostForm from '../components/PostForm'
 
 const EditPost = ({
   categories,
+  disabled,
   isSubmitted,
   values,
   handleChange,
@@ -19,6 +20,7 @@ const EditPost = ({
     )}
     <PostForm
       categories={categories}
+      disabled={disabled}
       values={values}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
@@ -28,6 +30,7 @@ const EditPost = ({
 
 EditPost.propTypes = {
   categories: PropTypes.array.isRequired,
+  disabled: PropTypes.bool.isRequired,
   isSubmitted: PropTypes.bool.isRequired,
   values: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,

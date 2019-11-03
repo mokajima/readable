@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { handleAddPost } from '../actions/posts'
@@ -15,6 +15,11 @@ const NewPostContainer = () => {
   const categories = useSelector(state => state.categories)
   const dispatch = useDispatch()
   const history = useHistory()
+
+  const disabled = useMemo(() => {
+    const { title, body, author } = values
+    return title.trim() === "" || body.trim() === "" || author.trim() === ""
+  }, [values])
 
   const handleChange = (targetName, newValue) => {
     setValues(v => ({ ...v, [targetName]: newValue }))
@@ -37,6 +42,7 @@ const NewPostContainer = () => {
   return (
     <NewPost
       categories={categories}
+      disabled={disabled}
       values={values}
       handleChange={handleChange}
       handleSubmit={handleSubmit}

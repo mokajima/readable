@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 const PostForm = ({
   categories,
+  disabled,
   values,
   handleChange,
   handleSubmit
@@ -63,7 +64,11 @@ const PostForm = ({
         </tr>
       </tbody>
     </table>
-    <button className="button" onClick={handleSubmit}>
+    <button
+      className="button"
+      disabled={disabled}
+      onClick={handleSubmit}
+    >
       Submit
     </button>
   </>
@@ -71,6 +76,7 @@ const PostForm = ({
 
 PostForm.propTypes = {
   categories: PropTypes.array.isRequired,
+  disabled: PropTypes.bool.isRequired,
   values: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired

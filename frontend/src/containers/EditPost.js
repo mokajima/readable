@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { handleEditPost } from '../actions/posts'
@@ -21,6 +21,11 @@ const EditPostContainer = () => {
     category: post.category
   })
 
+  const disabled = useMemo(() => {
+    const { title, body, author } = values
+    return title.trim() === "" || body.trim() === "" || author.trim() === ""
+  }, [values])
+
   const handleChange = (targetName, newValue) => {
     setIsSubmitted(false)
     setValues(v => ({ ...v, [targetName]: newValue }))
@@ -41,6 +46,7 @@ const EditPostContainer = () => {
   return (
     <EditPost
       categories={categories}
+      disabled={disabled}
       isSubmitted={isSubmitted}
       values={values}
       post={post}

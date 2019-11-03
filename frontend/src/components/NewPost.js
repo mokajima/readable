@@ -5,6 +5,7 @@ import PostForm from '../components/PostForm'
 
 const NewPost = ({
   categories,
+  disabled,
   values,
   handleChange,
   handleSubmit
@@ -15,6 +16,7 @@ const NewPost = ({
     </Helmet>
     <PostForm
       categories={categories}
+      disabled={disabled}
       values={values}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
@@ -24,6 +26,7 @@ const NewPost = ({
 
 NewPost.propTypes = {
   categories: PropTypes.array.isRequired,
+  disabled: PropTypes.bool.isRequired,
   values: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired
