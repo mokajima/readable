@@ -12,7 +12,7 @@ const NewPost = ({
 }) => (
   <>
     <Helmet>
-      <title>Add New Post | Readable</title>
+      <title>Add New Post</title>
     </Helmet>
     <PostForm
       categories={categories}

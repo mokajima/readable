@@ -13,7 +13,7 @@ const EditPost = ({
 }) => (
   <>
     <Helmet>
-      <title>Edit Post | Readable</title>
+      <title>Edit Post</title>
     </Helmet>
     {isSubmitted && (
       <p>Post updated!</p>

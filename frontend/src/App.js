@@ -21,9 +21,7 @@ const App = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Readable</title>
-      </Helmet>
+      <Helmet defaultTitle="Readable" titleTemplate="%s | Readable" />
       <BrowserRouter>
         <>
           <Header />

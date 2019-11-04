@@ -17,7 +17,7 @@ const PostsList = ({
   <>
     {category && (
       <Helmet>
-        <title>{category} | Readable</title>
+        <title>{category}</title>
       </Helmet>
     )}
     <ul className="tabs">

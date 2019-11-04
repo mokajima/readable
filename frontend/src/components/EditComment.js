@@ -11,7 +11,7 @@ const EditComment = ({
 }) => (
   <>
     <Helmet>
-      <title>Edit Comment | Readable</title>
+      <title>Edit Comment</title>
     </Helmet>
     {isSubmitted && (
       <p>Comment updated!</p>

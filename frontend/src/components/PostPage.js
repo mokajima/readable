@@ -36,7 +36,7 @@ const PostPage = ({
   return (
     <>
       <Helmet>
-        <title>{post.title} | Readable</title>
+        <title>{post.title}</title>
       </Helmet>
       <article className="entry">
         <div className="entry__inner">
