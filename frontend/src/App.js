@@ -2,9 +2,13 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import { handleInitialData } from './actions/shared'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
+
+// action
+import { handleInitialData } from './actions/shared'
+
+// view
 import Header from './containers/Header'
 import PostsList from './containers/PostsList'
 import PostPage from './containers/PostPage'
