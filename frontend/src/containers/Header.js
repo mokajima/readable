@@ -1,5 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+
+// view
 import Header from '../components/Header'
 
 const HeaderContainer = () => {

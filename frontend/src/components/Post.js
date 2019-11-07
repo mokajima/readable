@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment, faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
+
+// util
 import { formatDate } from '../utils/helpers'
 
 const Post = ({ post, handleDeletePost, handleUpPostVote, handleDownPostVote }) => (

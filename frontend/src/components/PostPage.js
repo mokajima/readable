@@ -4,7 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment, faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
+
+// util
 import { formatDate } from '../utils/helpers'
+
+// view
 import Comment from '../components/Comment'
 import NewComment from '../components/NewComment'
 

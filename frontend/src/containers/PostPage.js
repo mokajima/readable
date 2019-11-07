@@ -1,11 +1,17 @@
 import React, { useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
+
+// action
 import * as sharedActions from '../actions/shared'
 import * as commentsActions from '../actions/comments'
 import * as postsActions from '../actions/posts'
-import PostPage from '../components/PostPage'
+
+// util
 import { getId, getTimestamp } from '../utils/helpers'
+
+// view
+import PostPage from '../components/PostPage'
 
 const PostPageContainer = () => {
   const [values, setValues] = useState({

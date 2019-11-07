@@ -1,8 +1,12 @@
 import React, { useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+
+// action
 import * as sharedActions from '../actions/shared'
 import * as postsActions from '../actions/posts'
+
+// view
 import PostsList from '../components/PostsList'
 
 const PostsListContainer = () => {
