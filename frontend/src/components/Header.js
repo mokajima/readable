@@ -9,7 +9,7 @@ const Header = ({ categories }) => (
       <ul className="categories-list">
         {categories.map(category => (
           <li className="categories-list__item" key={category.name}>
-            <NavLink to={`/${category.path}`} activeStyle={{color: 'b40b43'}}>
+            <NavLink to={`/${category.path}`} activeStyle={{ color: 'b40b43' }}>
               {category.name}
             </NavLink>
           </li>
