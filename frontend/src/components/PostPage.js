@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 // util
-import { formatDate } from '../utils/helpers'
+import { formatDate } from 'utils/helpers'
 
 // view
-import Comment from '../components/Comment'
-import NewComment from '../components/NewComment'
+import Comment from 'components/Comment'
+import NewComment from 'components/NewComment'
 
 const PostPage = ({
   comments,

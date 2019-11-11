@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 
 // view
-import PostForm from '../components/PostForm'
+import PostForm from 'components/PostForm'
 
 const NewPost = ({
   categories,

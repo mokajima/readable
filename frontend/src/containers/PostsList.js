@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 // action
-import * as sharedActions from '../actions/shared'
-import * as postsActions from '../actions/posts'
+import * as sharedActions from 'actions/shared'
+import * as postsActions from 'actions/posts'
 
 // view
-import PostsList from '../components/PostsList'
+import PostsList from 'components/PostsList'
 
 const PostsListContainer = () => {
   const [sort, setSort] = useState('newest')

@@ -1,4 +1,4 @@
-import { addNewPost, updatePost, votePost } from '../utils/api'
+import { addNewPost, updatePost, votePost } from 'utils/api'
 
 import {
   RECEIVE_POSTS,

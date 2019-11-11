@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 
 // view
-import Post from '../components/Post'
+import Post from 'components/Post'
 
 const tabs = ['newest', 'oldest', 'votes']
 

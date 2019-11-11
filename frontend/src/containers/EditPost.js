@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 // action
-import { handleEditPost } from '../actions/posts'
+import { handleEditPost } from 'actions/posts'
 
 // util
-import { getTimestamp } from '../utils/helpers'
+import { getTimestamp } from 'utils/helpers'
 
 // view
-import EditPost from '../components/EditPost'
+import EditPost from 'components/EditPost'
 
 const EditPostContainer = () => {
   const dispatch = useDispatch()

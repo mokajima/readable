@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
 // util
-import { formatDate } from '../utils/helpers'
+import { formatDate } from 'utils/helpers'
 
 const Comment = ({
   comment,

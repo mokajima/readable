@@ -1,4 +1,4 @@
-import { updateComment, voteComment } from '../utils/api'
+import { updateComment, voteComment } from 'utils/api'
 import {
   RECEIVE_COMMENTS,
   ADD_COMMENT,

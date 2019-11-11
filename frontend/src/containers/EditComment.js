@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 // action
-import { handleEditComment } from '../actions/comments'
+import { handleEditComment } from 'actions/comments'
 
 // util
-import { getTimestamp } from '../utils/helpers'
+import { getTimestamp } from 'utils/helpers'
 
 // view
-import EditComment from '../components/EditComment'
+import EditComment from 'components/EditComment'
 
 const EditCommentContainer = () => {
   const dispatch = useDispatch()

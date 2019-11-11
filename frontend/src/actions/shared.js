@@ -8,7 +8,7 @@ import {
   addCommentToPost,
   disableComment,
   disablePost
-} from '../utils/api'
+} from 'utils/api'
 
 export function handleInitialData() {
   return (dispatch) =>

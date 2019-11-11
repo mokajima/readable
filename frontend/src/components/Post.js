@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment, faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
 // util
-import { formatDate } from '../utils/helpers'
+import { formatDate } from 'utils/helpers'
 
 const Post = ({ post, handleDeletePost, handleUpPostVote, handleDownPostVote }) => (
   <li className="posts-list__item post">

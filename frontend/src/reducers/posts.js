@@ -7,7 +7,7 @@ import {
   DOWN_POST_VOTE,
   ADD_CHILD_COMMENT,
   DELETE_CHILD_COMMENT
-} from '../actions/types'
+} from 'actions/types'
 
 export default function posts(state = {}, action) {
   switch (action.type) {

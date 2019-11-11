@@ -6,15 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 
 // action
-import { handleInitialData } from './actions/shared'
+import { handleInitialData } from 'actions/shared'
 
 // view
-import Header from './containers/Header'
-import PostsList from './containers/PostsList'
-import PostPage from './containers/PostPage'
-import NewPost from './containers/NewPost'
-import EditPost from './containers/EditPost'
-import EditComment from './containers/EditComment'
+import Header from 'containers/Header'
+import PostsList from 'containers/PostsList'
+import PostPage from 'containers/PostPage'
+import NewPost from 'containers/NewPost'
+import EditPost from 'containers/EditPost'
+import EditComment from 'containers/EditComment'
 
 const App = () => {
   const dispatch = useDispatch()
